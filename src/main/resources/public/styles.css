@@ -1,0 +1,47 @@
+.parent {
+    height: 100vh; /* Adjust the height as needed */
+}
+
+.centered {
+    /* Additional styles for the centered div, if necessary */
+}
+
+.screen {
+    text-align: center;
+    padding: 20px;
+}
+
+#microphoneButton {
+    font-size: 24px;
+    padding: 20px;
+}
+
+.language:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+    cursor: pointer; /* Change cursor to indicate clickable */
+}
+
+
+#answer {
+    background-color: beige;
+    font-size: 5vh;
+}
+
+/*
+see: https://css-tricks.com/timer-bars-in-css-with-custom-properties/
+ */
+.round-time-bar div {
+    margin-top: 10px;
+    height: 5px;
+    background: linear-gradient(to bottom, red, #900);
+
+    animation: roundtime calc(var(--duration) * 1s) steps(var(--duration)) forwards;
+    transform-origin: left center;
+}
+
+@keyframes roundtime {
+    to {
+        /* More performant than animating `width` */
+        transform: scaleX(0);
+    }
+}

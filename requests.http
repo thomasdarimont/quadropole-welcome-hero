@@ -1,0 +1,14 @@
+### Send POST request with json body
+POST http://localhost:8080/api/speech-to-text
+Content-Type: application/json
+
+{
+  "lang": "de",
+  "audioBlob": "webm-audio: Wo ist die nächste Toilette"
+}
+
+###
+PUT http://localhost:8080/api/instructions/additional
+Content-Type: text/plain
+
+< ./cafeteria.prompt

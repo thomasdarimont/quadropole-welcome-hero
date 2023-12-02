@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Hero</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="d-flex justify-content-center align-items-center parent">
+<div class="centered">
+    <h2 class="d-flex justify-content-center">Welcome Hero</h2>
+    <div id="welcome" class="screen">
+
+        <a href="#" onclick="showScreen('help')">Help</a>
+        <a href="#" onclick="showScreen('lang')">Language Selection</a>
+        <a href="#" onclick="showScreen('conversation')">Conversation</a>
+    </div>
+    <div id="help" class="screen">
+        <video controls>
+            <!-- <source src="demo.mp4" type="video/mp4"> -->
+        </video>
+    </div>
+    <div id="lang" class="screen">
+        <!-- Add language options here -->
+
+        <table class="table">
+            <tbody>
+            <!-- Row 1 -->
+            <tr>
+                <td class="language" data-lang="af">🇿🇦 Afrikaans</td>
+                <td class="language" data-lang="ar">🇸🇦 العربية</td>
+                <td class="language" data-lang="hy">🇦🇲 Հայերեն</td>
+                <td class="language" data-lang="az">🇦🇿 Azərbaycanca</td>
+                <td class="language" data-lang="be">🇧🇾 Беларуская</td>
+                <td class="language" data-lang="bs">🇧🇦 Bosanski</td>
+                <td class="language" data-lang="bg">🇧🇬 Български</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="ca">🇪🇸 Català</td>
+                <td class="language" data-lang="zh">🇨🇳 中文</td>
+                <td class="language" data-lang="hr">🇭🇷 Hrvatski</td>
+                <td class="language" data-lang="cs">🇨🇿 Čeština</td>
+                <td class="language" data-lang="da">🇩🇰 Dansk</td>
+                <td class="language" data-lang="nl">🇳🇱 Nederlands</td>
+                <td class="language" data-lang="en">🇬🇧 English</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="et">🇪🇪 Eesti</td>
+                <td class="language" data-lang="fi">🇫🇮 Suomi</td>
+                <td class="language" data-lang="fr">🇫🇷 Français</td>
+                <td class="language" data-lang="gl">🇪🇸 Galego</td>
+                <td class="language" data-lang="de">🇩🇪 Deutsch</td>
+                <td class="language" data-lang="el">🇬🇷 Ελληνικά</td>
+                <td class="language" data-lang="he">🇮🇱 עברית</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="hi">🇮🇳 हिन्दी</td>
+                <td class="language" data-lang="hu">🇭🇺 Magyar</td>
+                <td class="language" data-lang="is">🇮🇸 Íslenska</td>
+                <td class="language" data-lang="id">🇮🇩 Bahasa Indonesia</td>
+                <td class="language" data-lang="it">🇮🇹 Italiano</td>
+                <td class="language" data-lang="ja">🇯🇵 日本語</td>
+                <td class="language" data-lang="kn">🇮🇳 ಕನ್ನಡ</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="kk">🇰🇿 Қазақша</td>
+                <td class="language" data-lang="lv">🇱🇻 Latviešu</td>
+                <td class="language" data-lang="lt">🇱🇹 Lietuvių</td>
+                <td class="language" data-lang="mk">🇲🇰 Македонски</td>
+                <td class="language" data-lang="ms">🇲🇾 Bahasa Melayu</td>
+                <td class="language" data-lang="mr">🇮🇳 मराठी</td>
+                <td class="language" data-lang="mi">🇳🇿 Māori</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="ne">🇳🇵 नेपाली</td>
+                <td class="language" data-lang="no">🇳🇴 Norsk</td>
+                <td class="language" data-lang="fa">🇮🇷 فارسی</td>
+                <td class="language" data-lang="pl">🇵🇱 Polski</td>
+                <td class="language" data-lang="pt">🇵🇹 Português</td>
+                <td class="language" data-lang="ro">🇷🇴 Română</td>
+                <td class="language" data-lang="ru">🇷🇺 Русский</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="sr">🇷🇸 Српски</td>
+                <td class="language" data-lang="sk">🇸🇰 Slovenčina</td>
+                <td class="language" data-lang="sl">🇸🇮 Slovenščina</td>
+                <td class="language" data-lang="es">🇪🇸 Español</td>
+                <td class="language" data-lang="sw">🇰🇪 Kiswahili</td>
+                <td class="language" data-lang="sv">🇸🇪 Svenska</td>
+                <td class="language" data-lang="tl">🇵🇭 Tagalog</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="ta">🇮🇳 தமிழ்</td>
+                <td class="language" data-lang="th">🇹🇭 ไทย</td>
+                <td class="language" data-lang="tr">🇹🇷 Türkçe</td>
+                <td class="language" data-lang="uk">🇺🇦 Українська</td>
+                <td class="language" data-lang="ur">🇵🇰 اردو</td>
+                <td class="language" data-lang="vi">🇻🇳 Tiếng Việt</td>
+                <td class="language" data-lang="cy">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="as">🇮🇳 অসমীয়া</td>
+                <td class="language" data-lang="bn">🇮🇳 বাংলা</td>
+                <td class="language" data-lang="gu">🇮🇳 ગુજરાતી</td>
+                <td class="language" data-lang="ml">🇮🇳 മലയാളം</td>
+                <td class="language" data-lang="or">🇮🇳 ଓଡ଼ିଆ</td>
+                <td class="language" data-lang="pa">🇮🇳 ਪੰਜਾਬੀ</td>
+                <td class="language" data-lang="sd">🇵🇰 سنڌي</td>
+            </tr>
+
+            <tr>
+                <td class="language" data-lang="si">🇱🇰 සිංහල</td>
+                <td class="language" data-lang="te">🇮🇳 తెలుగు</td>
+                <td class="language" data-lang="am">🇪🇹 አማርኛ</td>
+                <td class="language" data-lang="km">🇰🇭 ខ្មែរ</td>
+                <td class="language" data-lang="lo">🇱🇦 ລາວ</td>
+                <td class="language" data-lang="my">🇲🇲 ဗမာ</td>
+            </tr>
+            <!-- Additional rows here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="conversation" class="screen">
+        <button onclick="showScreen('lang')">⬅️</button>
+        <span id="selectedLang"></span>
+        <span id="currentDate"></span>
+
+        <h1 id="conversation_caption" class="cta">What do you want to know?</h1>
+        <p id="press_button_caption">Press the button to ask a question</p>
+        <div>
+            <button id="microphoneButton" class="btn btn-primary" onmousedown="audioRecorder.startRecording()"
+                    onmouseup="audioRecorder.stopRecording()">
+                <span>🎙</span>
+            </button>
+        </div>
+        <div style="display: none">
+            <audio id="audioPlayback" controls></audio>
+        </div>
+        <div id="tts">
+
+        </div>
+
+        <div id="answer">
+
+        </div>
+        <div id="answer_retention_indicator" class="round-time-bar" style="--duration: 10; display: none">
+            <div></div>
+        </div>
+
+    </div>
+</div>
+<script src="welcomehero.js"></script>
+<script src="audio.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
