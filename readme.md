@@ -23,7 +23,7 @@ The possible applications of this system are, of course, not limited to hospital
 
 # Demo
 
-![Demo](./demo.mp4)
+[![Welcome Hero Demo](https://img.youtube.com/vi/7tFBhrh3o8Y/0.jpg)](https://www.youtube.com/watch?v=7tFBhrh3o8Y "Welcome Hero Demo")
 
 # Context
 
