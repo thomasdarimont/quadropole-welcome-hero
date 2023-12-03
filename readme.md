@@ -38,7 +38,7 @@ the team developed the concept and built an executable prototype.
 The cross-functional team around Louise, Nina, Jake, Florian, Sebastian, and Thomas consisted of three bilingual students 
 of the [DFHI](https://www.dfhi-isfates.eu/de/ueber-das-dfhi/) (Business Administration French / German), 
 two app developers (Android, Flutter), and a web developer won the special €1000 prize of the supra-regional 
-Quattropole Challenge for the solution this is most generally applicable across all regions.
+Quattropole Challenge for the solution that is most generally applicable across all regions.
 
 # Tech 
 
