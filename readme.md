@@ -21,6 +21,10 @@ The possible applications of this system are, of course, not limited to hospital
 - School: Making information more easily accessible for refugee pupils
 - Public transport: Information on tickets -> Which ticket is right for me to get from A to B?
 
+# Demo
+
+![Demo](./demo.mp4)
+
 # Context
 
 The project was developed during the first [Quattropole Health Hackathon (2023)](https://healthhackathon.quattropole.org/), 
