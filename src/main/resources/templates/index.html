@@ -12,8 +12,12 @@
 <body class="d-flex justify-content-center align-items-center parent">
 <div class="centered">
     <h2 class="d-flex justify-content-center">Welcome Hero</h2>
-    <div id="welcome" class="screen">
+    <div id="welcome" class="screen" onclick="showScreen('lang')">
 
+        <div>
+            <img class="avatar" src="hero-female.png">
+            <img class="avatar" src="hero-male.png">
+        </div>
         <a href="#" onclick="showScreen('help')">Help</a>
         <a href="#" onclick="showScreen('lang')">Language Selection</a>
         <a href="#" onclick="showScreen('conversation')">Conversation</a>
@@ -141,13 +145,15 @@
         <div>
             <button id="microphoneButton" class="btn btn-primary" onmousedown="audioRecorder.startRecording()"
                     onmouseup="audioRecorder.stopRecording()">
-                <span>🎙</span>
+                <span class="microphone">🎙</span>
             </button>
+            <span class="keyboard">⌨️</span>
         </div>
         <div style="display: none">
             <audio id="audioPlayback" controls></audio>
         </div>
-        <div id="tts">
+
+        <div id="stt">
 
         </div>
 

@@ -6,9 +6,21 @@
     /* Additional styles for the centered div, if necessary */
 }
 
+.microphone {
+    font-size: 12vh;
+}
+
+.keyboard {
+    font-size: 12vh;
+}
+
 .screen {
     text-align: center;
     padding: 20px;
+}
+
+.avatar {
+    width: 400px;
 }
 
 #microphoneButton {

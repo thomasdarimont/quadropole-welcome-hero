@@ -47,7 +47,7 @@ window.onload = function () {
         });
     });
 
-    showScreen("lang");
+    showScreen("welcome");
 
     let audioRecorder = new AudioRecorder();
     audioRecorder.onRecordingAvailable =  (audioBlob) => {
@@ -73,6 +73,8 @@ window.onload = function () {
                         input: speechToTextResult.text, //
                         language: speechToTextResult.language,
                     };
+
+                    // $("#stt").innerText = speechToTextResult.text;
 
                     let assistantResponse = await sendRequest("/api/generate", //
                         {

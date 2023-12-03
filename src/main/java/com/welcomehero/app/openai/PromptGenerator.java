@@ -11,11 +11,14 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 @Getter
 @Setter
@@ -43,6 +46,10 @@ public class PromptGenerator {
         ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Europe/Berlin"));
         promptBuilder.append("Die aktuelle Systemzeit ist: ");
         promptBuilder.append(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).format(zonedDateTime));
+        promptBuilder.append("\n");
+
+        promptBuilder.append("Heute ist: ");
+        promptBuilder.append(LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.GERMAN));
         promptBuilder.append("\n");
 
         promptBuilder.append("Die Sprache des Benutzers ist: ");
