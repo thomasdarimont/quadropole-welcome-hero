@@ -21,6 +21,10 @@ The possible applications of this system are, of course, not limited to hospital
 - School: Making information more easily accessible for refugee pupils
 - Public transport: Information on tickets -> Which ticket is right for me to get from A to B?
 
+Note that although the current prototype uses cloud-based services, an actual implementation 
+would work completely fine with locally self-hosted AI models, which would be the preferred way 
+to use this system for the sake of user privacy.
+
 # Demo
 
 [![Welcome Hero Demo](https://img.youtube.com/vi/7tFBhrh3o8Y/0.jpg)](https://www.youtube.com/watch?v=7tFBhrh3o8Y "Welcome Hero Demo")
