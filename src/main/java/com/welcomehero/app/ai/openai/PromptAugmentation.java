@@ -1,10 +1,9 @@
-package com.welcomehero.app.openai;
+package com.welcomehero.app.ai.openai;
 
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.ai.prompt.Prompt;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +22,7 @@ import java.util.Locale;
 @Getter
 @Setter
 @Component
-public class PromptGenerator {
+public class PromptAugmentation {
 
     private String promptPrefix;
 
@@ -40,22 +39,13 @@ public class PromptGenerator {
     public Prompt generate(String lang, String input) {
 
         var promptBuilder = new StringBuilder();
+
         promptBuilder.append(promptPrefix);
         promptBuilder.append("\n");
 
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Europe/Berlin"));
-        promptBuilder.append("Die aktuelle Systemzeit ist: ");
-        promptBuilder.append(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).format(zonedDateTime));
-        promptBuilder.append("\n");
 
-        promptBuilder.append("Heute ist: ");
-        promptBuilder.append(LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.GERMAN));
-        promptBuilder.append("\n");
-
-        promptBuilder.append("Die Sprache des Benutzers ist: ");
-        promptBuilder.append(lang);
-        promptBuilder.append("\n");
-        promptBuilder.append("Die von dir generierte Antwort soll immer in der Sprache des Benutzers erfolgen!");
+        String contextHints = getContextHints(lang);
+        promptBuilder.append(contextHints);
         promptBuilder.append("\n");
 
         promptBuilder.append(input);
@@ -69,7 +59,28 @@ public class PromptGenerator {
         return new Prompt(promptBuilder.toString());
     }
 
-    @NotNull
+    public String getContextHints(String lang) {
+
+        StringBuilder promptBuilder = new StringBuilder();
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Europe/Berlin"));
+        promptBuilder.append("The current system time is: ");
+        promptBuilder.append(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).format(zonedDateTime));
+        promptBuilder.append("\n");
+
+        promptBuilder.append("Today is: ");
+        promptBuilder.append(LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.GERMAN));
+        promptBuilder.append("\n");
+
+        promptBuilder.append("The language of the user is: ");
+        promptBuilder.append(lang);
+        promptBuilder.append("\n");
+        promptBuilder.append("The response you generate should always be in the user's language!");
+        promptBuilder.append("\n");
+
+        return promptBuilder.toString();
+    }
+
     private static String readFile(String path) {
         try {
             File resource = new ClassPathResource(path).getFile();

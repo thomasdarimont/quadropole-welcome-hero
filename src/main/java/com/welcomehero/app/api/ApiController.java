@@ -1,6 +1,6 @@
 package com.welcomehero.app.api;
 
-import com.welcomehero.app.openai.OpenAiFacade;
+import com.welcomehero.app.ai.openai.OpenAiFacade;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
     private final OpenAiFacade openAi;
-
-    @PutMapping("instructions/additional")
-    public ResponseEntity<?> updateInstructions(@RequestBody String input) {
-
-        log.info("> updateInstructions - instruction: <{}>", input);
-
-        openAi.updateInstructions(input);
-
-        log.info("< updateInstructions");
-        return ResponseEntity.ok().build();
-    }
 
     @PostMapping("/speech-to-text")
     public ResponseEntity<SpeechToTextOutput> speechToText(@RequestBody SpeechToTextInput input) {
@@ -53,5 +42,16 @@ public class ApiController {
         log.info("< generate - language: <{}> input: <{}>", input.language(), generatedText);
 
         return ResponseEntity.ok(assistantOutput);
+    }
+    
+    @PutMapping("instructions/additional")
+    public ResponseEntity<?> updateInstructions(@RequestBody String input) {
+
+        log.info("> updateInstructions - instruction: <{}>", input);
+
+        openAi.updateInstructions(input);
+
+        log.info("< updateInstructions");
+        return ResponseEntity.ok().build();
     }
 }

@@ -104,6 +104,5 @@ window.onload = function () {
 
     window.audioRecorder = audioRecorder;
 
-    const welcomeHero = new WelcomeHero();
-    window.welcomeHero = welcomeHero;
+    window.welcomeHero = new Welcomehero();
 };

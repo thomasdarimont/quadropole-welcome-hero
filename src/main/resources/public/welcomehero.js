@@ -1,4 +1,4 @@
-class WelcomeHero {
+class Welcomehero {
     constructor() {
         this.currentLanguage = "de";
         this.translations = { //

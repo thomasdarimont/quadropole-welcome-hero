@@ -1,40 +1,35 @@
-package com.welcomehero.app.openai;
+package com.welcomehero.app.ai.openai;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.welcomehero.app.ai.SpeechToText;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.ai.client.AiClient;
+import org.springframework.ai.autoconfigure.openai.OpenAiChatProperties;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestClient;
 
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class OpenAiFacade {
+public class OpenAiSpeechToText implements SpeechToText {
 
-    private static final String OPENID_TOKEN = System.getenv("SPRING_AI_OPENAI_API_KEY");
+    private final OpenAiChatProperties openAiChatProperties;
 
-    private final AiClient aiClient;
-
-    private final PromptGenerator promptGenerator;
-
-    public String generateText(String lang, String input) {
-
-        var prompt = promptGenerator.generate(lang, input);
-        var response = aiClient.generate(prompt);
-
-        return response.getGeneration().getText();
+    @Override
+    public String transcribe(String lang, String base64DecodedAudio) {
+        return transcribe(lang, decodeBase64AsByteArrayResource(base64DecodedAudio));
     }
 
-    public String speechToText(String lang, String blob) {
-
-        var audioBlobResource = decoreBase64AsByteArrayResource(blob);
-
+    public String transcribe(String lang, Resource audioBlobResource) {
         var restClient = RestClient.create();
 
         // see https://platform.openai.com/docs/api-reference/audio/createTranscription
@@ -47,21 +42,37 @@ public class OpenAiFacade {
 
         var response = restClient.post() //
                 .uri("https://api.openai.com/v1/audio/transcriptions") //
-                .header("Authorization", "Bearer " + OPENID_TOKEN) //
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + openAiChatProperties.getApiKey()) //
                 .body(formData) //
                 .retrieve();
 
         try {
-            Map body = response.body(Map.class);
-            return String.valueOf(body.get("text"));
+            TranscribeResponse transcription = response.body(TranscribeResponse.class);
+            return transcription.getText();
         } catch (Exception ex) {
             log.error("Did not understand", ex);
             return "DID_NOT_UNDERSTAND";
         }
     }
 
-    @NotNull
-    private static ByteArrayResource decoreBase64AsByteArrayResource(String blob) {
+    @Data
+    static class TranscribeResponse {
+
+        String text;
+
+        Map<String, Object> properties;
+
+        @JsonAnySetter
+        public void onUnknownProperty(String key, Object value) {
+            if (properties == null) {
+                properties = new HashMap<>();
+            }
+            properties.put(key, value);
+        }
+    }
+
+
+    private static ByteArrayResource decodeBase64AsByteArrayResource(String blob) {
         var audioBlobBase64 = blob.substring(blob.indexOf(',') + 1);
         var decodedBytes = Base64.getDecoder().decode(audioBlobBase64);
         return new ByteArrayResource(decodedBytes) {
@@ -72,7 +83,4 @@ public class OpenAiFacade {
         };
     }
 
-    public void updateInstructions(String instruction) {
-        promptGenerator.setAdditionalInstruction(instruction);
-    }
 }
